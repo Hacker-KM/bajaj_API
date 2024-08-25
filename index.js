@@ -12,30 +12,34 @@ app
     const data = req.body.data || [];
     const numbers = [];
     const alphabets = [];
-    let highest_alphabet = "";
+    let highest_lowercase_alphabet = "";
 
     for (const item of data) {
       if (!isNaN(item)) {
         numbers.push(item);
       } else if (item.length === 1 && isNaN(item)) {
         alphabets.push(item);
-        if (
-          !highest_alphabet ||
-          item.toUpperCase() > highest_alphabet.toUpperCase()
-        ) {
-          highest_alphabet = item;
+        if (item >= "a" && item <= "z") {
+          if (
+            !highest_lowercase_alphabet ||
+            item>highest_lowercase_alphabet
+          ) {
+            highest_lowercase_alphabet = item;
+          }
         }
       }
     }
 
     res.json({
       is_success: true,
-      user_id: "sanhita17",
-      email: "sanhita.kundu2020@vitstudent.ac.in",
-      roll_number: "20BEC0215",
+      user_id: "kartik_mishra_03062003",
+      email: "kartik.mishra2021@vitbhopal.ac.in",
+      roll_number: "21BSA10006",
       numbers: numbers,
       alphabets: alphabets,
-      highest_alphabet: highest_alphabet ? [highest_alphabet] : [],
+      highest_lowercase_alphabet: highest_lowercase_alphabet
+        ? [highest_lowercase_alphabet]
+        : [],
     });
   });
 
